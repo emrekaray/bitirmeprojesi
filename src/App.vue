@@ -12,12 +12,14 @@
 import Meeting from './components/meeting.vue'
 import pastMeeting from './components/pastMeetings.vue'
 import upcomingMeeting from './components/upcomingMeetings.vue'
+import Login from './components/login.vue'
 export default {
 
   components: {
     Meeting,
     pastMeeting,
-    upcomingMeeting
+    upcomingMeeting,
+    Login
 },
 
 }

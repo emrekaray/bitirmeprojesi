@@ -6,6 +6,14 @@
     <input v-model="baslik" type="text" required/>
     <label>Konu : </label>
     <input v-model="konu" type="text" required/>
+    <label>Tarih : </label>
+    <input v-model="tarih" type="date" required/>
+    <label>Kişiler: </label>
+    <input v-model="kisiler" type="text" required/>
+    <label>Toplantı Saati: </label>
+    <input v-model="saat" type="time" required/>
+    <label>Toplantı Linki: </label>
+    <input v-model="link" type="url" pattern = "https://.*" placeholder ="https://example.com" required/>
     <button>Toplantı Ekle</button>
 
 
@@ -18,7 +26,13 @@ export default {
     data(){
         return{
             baslik:'',
-            konu:''
+            konu:'',
+            tarih:'',
+            kisiler:'',
+            saat:'',
+            link:''
+
+
         }
     },
     methods:{
@@ -27,7 +41,11 @@ export default {
                 baslik:this.baslik,
                 konu:this.konu,
                 yapildi:false,
-                id:Math.floor(Math.random()*100000000)
+                id:Math.floor(Math.random()*100000000),
+                tarih:this.tarih,
+                kisiler:this.kisiler,
+                saat:this.saat,
+                link:this.link
             }
             fetch('http://localhost:3000/toplantilar',{
                 method:'POST',
@@ -35,8 +53,8 @@ export default {
                 body:JSON.stringify(toplanti)
             }).then(()=>{
                 this.$router.push('/')
-
             })
+            alert('Toplantı Eklendi.')
         }
     }
 

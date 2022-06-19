@@ -1,7 +1,7 @@
 <template>
 <div class="Aktiftoplanti" :class="{yapildi:toplanti1.yapildi}">
     <div class="baslik">
-        <h2  @click="detayGoster=!detayGoster">{{toplanti1.baslik}}</h2>
+        <h3  @click="detayGoster=!detayGoster">{{toplanti1.baslik}}</h3>
 
         <div class="icon">
            <router-link :to="{name:'ToplantiGuncelle',params:{id:toplanti1.id}}">
@@ -12,12 +12,11 @@
 
         </div>
     </div>
-    <div v-if="detayGoster" id="detay">
-        <h3>Toplantı Konusu = {{toplanti1.konu}}</h3>
-       <h3>Toplantı Tarihi = {{toplanti1.tarih}}</h3>
-       <h3>Toplantı Üyeleri = {{toplanti1.kisiler}}</h3>
-       <h3>Toplantı Katılım Linki = {{toplanti1.link}}</h3>
-       <h3>Toplantı Saati = {{toplanti1.saat}}</h3>
+    <div v-if="detayGoster" class="detay">
+        <p>{{toplanti1.konu}}</p>
+        <p>{{toplanti1.tarih}}</p>
+        <p>{{toplanti1.kisiler}}</p>
+        <p>{{toplanti1.konu}}</p>
     </div>
 
 </div>
@@ -101,8 +100,5 @@ h3{
 .Aktiftoplanti.yapildi .tick{
     color: #218c74;
 }
-.detay{
-    text-align: left;
 
-}
 </style>

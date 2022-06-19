@@ -5,7 +5,7 @@
     <button @click="$store.dispatch('logout')">Çıkış Yap</button>
     <router-link :to="{name:'ToplantiEkle'}"><button>Toplantı Oluştur</button></router-link>
     <h4>Hoşgeldin</h4>
-    <h4>Emre Karay</h4>
+    <h4>{{email}}</h4>
     
   </div>
 </div>
@@ -17,13 +17,26 @@ import { onBeforeMount } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
+  data(){
+    return{
+      kullanicilar:[],
+
+    }
+  },
+
   setup() {
     const store = useStore()
 
     onBeforeMount(() => {
       store.dispatch('fetchUser')
     })
-  }
+  },
+   mounted() {
+    fetch('http://localhost:3000/kullanicilar')
+      .then((res) => res.json())
+      .then((data) => this.kullanicilar = data)
+      .catch((err) => console.log(err))
+  },
 }
 </script>
 
